@@ -15,8 +15,8 @@ services:
           - vinay-network
     presto:
         container_name: presto
+        build: prestodb
         hostname: presto
-        image: 'ahanaio/prestodb-sandbox'
         depends_on:
                 - hive
         ports:

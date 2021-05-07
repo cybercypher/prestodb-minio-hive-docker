@@ -35,34 +35,38 @@
     <property>
         <name>fs.s3a.secret.key</name>
         <value>minio_secret_key</value>
+    </property>
      <property>
         <name>fs.s3.access.key</name>
         <value>minio_access_key</value>
+    </property>
+     <property>
+    	<name>fs.s3a.endpoint</name>
+	<value>http://minio:9000</value>
+    </property>
+   <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+    </property>
+     <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
     </property>
     <property>
         <name>fs.s3.secret.key</name>
         <value>minio_secret_key</value>
     </property>
-    </property>
     <property>
     	<name>fs.s3.endpoint</name>
-	<value>minio:9000</value>
-    </property>
-    <property>
-        <name>fs.s3a.path.style.access</name>
-        <value>true</value>
+	<value>http://minio:9000</value>
     </property>
      <property>
         <name>fs.s3.path.style.access</name>
         <value>true</value>
     </property>
-    <property>
-        <name>fs.s3a.impl</name>
-        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
-    </property>
-    <property>
+   <property>
         <name>fs.s3.impl</name>
-        <value>org.apache.hadoop.fs.s3.S3FileSystem</value>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
     </property>
 </configuration>
 

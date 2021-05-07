@@ -19,7 +19,7 @@ RUN apt-get update -y && apt-get install -y netcat procps supervisor
 COPY scripts/entrypoint.sh scripts/wait-for /usr/local/bin/
 COPY scripts/supervisord.conf /etc
 COPY conf/hive-site.xml ${HIVE_HOME}/conf
-COPY conf/hdfs-site.xml ${HADOOP_HOME}/conf
+COPY conf/hdfs-site.xml ${HADOOP_HOME}/conf/hdfs-site.xml
 
 ENV HADOOP_CLASSPATH=${HADOOP_HOME}/share/hadoop/tools/lib/aws-java-sdk-bundle-${AWS_SDK_VERSION}.jar:${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-aws-${HADOOP_VERSION}.jar
 ENV PATH=${HIVE_HOME}/bin:${PATH}
