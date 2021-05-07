@@ -11,7 +11,7 @@ ENV HIVE_HOME=/opt/apache-hive-${HIVE_VERSION}-bin
 RUN curl --progress-bar -SL https://www.apache.org/dist/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz | tar zxf -
 RUN curl --progress-bar -SL https://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar zxf -
 RUN curl --progress-bar -SL https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.19.tar.gz | tar -zx --strip-components 1 -C ${HIVE_HOME}/lib -f - mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar
-RUN curl -O /opt/json-serde.jar --progress-bar -SL http://www.congiu.net/hive-json-serde/1.3.8/hdp23/json-serde-1.3.8-jar-with-dependencies.jar 
+RUN curl -O --progress-bar -SL http://www.congiu.net/hive-json-serde/1.3.8/hdp23/json-serde-1.3.8-jar-with-dependencies.jar 
 RUN ln -s ${HADOOP_HOME}/share/hadoop/tools/lib/aws-java-sdk-bundle-${AWS_SDK_VERSION}.jar ${HIVE_HOME}/lib/
 RUN ln -s ${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-aws-${HADOOP_VERSION}.jar ${HIVE_HOME}/lib/
 RUN apt-get update -y && apt-get install -y netcat procps

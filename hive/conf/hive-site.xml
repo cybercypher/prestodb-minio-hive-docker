@@ -10,7 +10,7 @@
     </property>
      <property>
         <name>hive.aux.jars.path</name>
-	<value>/opt/json-serde.jar</value>
+	<value>/opt/json-serde-1.3.8-jar-with-dependencies.jar</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionDriverName</name>
