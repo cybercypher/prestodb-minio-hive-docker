@@ -14,9 +14,10 @@ RUN curl --progress-bar -SL https://dev.mysql.com/get/Downloads/Connector-J/mysq
 RUN curl -O --progress-bar -SL http://www.congiu.net/hive-json-serde/1.3.8/hdp23/json-serde-1.3.8-jar-with-dependencies.jar 
 RUN ln -s ${HADOOP_HOME}/share/hadoop/tools/lib/aws-java-sdk-bundle-${AWS_SDK_VERSION}.jar ${HIVE_HOME}/lib/
 RUN ln -s ${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-aws-${HADOOP_VERSION}.jar ${HIVE_HOME}/lib/
-RUN apt-get update -y && apt-get install -y netcat procps
+RUN apt-get update -y && apt-get install -y netcat procps supervisor
 
 COPY scripts/entrypoint.sh scripts/wait-for /usr/local/bin/
+COPY scripts/supervisord.conf /etc
 COPY conf/hive-site.xml ${HIVE_HOME}/conf
 COPY conf/hdfs-site.xml ${HADOOP_HOME}/conf
 
