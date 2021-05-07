@@ -1,0 +1,62 @@
+version: '3.7'
+services:
+    mariadb:
+        container_name: mariadb
+        hostname: mariadb
+        image: mariadb:10.5.8
+        ports:
+          - 3306:3306
+        environment:
+          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: admin
+          MYSQL_DATABASE: metastore_db
+        networks:
+          - vinay-network
+    presto:
+        container_name: presto
+        hostname: presto
+        image: 'ahanaio/prestodb-sandbox'
+        depends_on:
+                - hive
+        ports:
+            - '8080:8080'
+        volumes:
+            - ./etc:/opt/presto-server/etc
+        networks:
+            - vinay-network
+    hive:
+        container_name: hive
+        build: hive
+        environment:
+            DB_URI: mariadb:3306
+        depends_on:
+            - mariadb
+        networks:
+            - vinay-network
+    minio:
+        container_name: minio
+        hostname: minio
+        image: 'minio/minio:RELEASE.2021-01-08T21-18-21Z'
+        ports:
+            - '9000:9000'
+        volumes:
+            - minio-data:/data
+        environment:
+            MINIO_ACCESS_KEY: minio_access_key
+            MINIO_SECRET_KEY: minio_secret_key
+        command: server /data
+        networks:
+            - vinay-network
+    
+volumes:
+    minio-data:
+        driver: local
+
+networks:
+    vinay-network:
+        driver: bridge
+
+
+
+    
